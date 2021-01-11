@@ -16,13 +16,13 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       await conn.loadAuthInfo(obj)
     }
     conn.on('qr', async qr => {
-      let scan = await global.conn.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), 'qrcode.png', 'Scan QR ini untuk jadi bot sementara\n\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk WhatsApp Web\n3. Scan QR ini \nQR Expired dalam 20 detik\n\n *Sosmed*: \n*Instagram: @arpunchs*\n YouTube: Drawl Nag', m)
+      let scan = await global.conn.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), 'qrcode.png', 'Scan QR ini untuk jadi bot sementara\n\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk WhatsApp Web\n3. Scan QR ini \nQR Expired dalam 20 detik\n\n', m)
       setTimeout(() => {
         global.conn.deleteMessage(m.chat, scan.key)
       }, 30000)
     })
     conn.once('connection-validated', user => {
-      global.conn.reply(m.chat, 'Berhasil tersambung dengan WhatsApp Anda.\n*NOTE: kalo bot aku mati, bot kamu juga.*\n' + JSON.stringify(user, null, 2), m)
+      global.conn.reply(m.chat, 'Berhasil tersambung dengan WhatsApp Anda.\n*NOTE: Kata ilham kalo bot aku mati, bot kamu juga.*\n' + JSON.stringify(user, null, 2), m)
     })
     conn.on('message-new', global.conn.handler)
     conn.regenerateQRIntervalMs = null
